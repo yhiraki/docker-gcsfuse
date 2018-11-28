@@ -1,0 +1,16 @@
+version: '2.1'
+services:
+
+  gcs:
+    build: .
+    environment:
+      GCS_BUCKET: your-bucket-name
+      KEY_FILE: /credential.json
+    volumes:
+      - "./credential.json:/credential.json"
+    cap_add:
+      - SYS_ADMIN
+    security_opt:
+      - apparmor:unconfined
+    devices:
+      - /dev/fuse
